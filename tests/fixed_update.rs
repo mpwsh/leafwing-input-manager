@@ -157,6 +157,7 @@ fn frame_without_fixed_timestep() {
     // make sure that the timings didn't get updated twice (once in Update and once in FixedUpdate)
     // (the `tick` function has been called twice, but it uses `Time<Real>` to update the time,
     // which is only updated in `PreUpdate`, which is what we want)
+    #[cfg(feature = "timing")]
     assert_eq!(
         app.world
             .get_resource::<ActionState<TestAction>>()
